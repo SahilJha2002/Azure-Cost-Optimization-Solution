@@ -1,0 +1,9 @@
+graph TD
+    A[Client] --> B[API Layer]
+    B --> C{Is record < 3 months?}
+    C -->|Yes| D[Cosmos DB]
+    C -->|No| E[Blob Storage]
+    F[Archival Function] --> D
+    F --> E
+    F --> G[Metadata Store]
+    B --> G
